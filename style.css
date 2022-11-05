@@ -1,0 +1,209 @@
+/*Alterar para todas as tags*/
+/*O margin e padding retira os espaços e preenchimento das caixas*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /*Pega a medida apartir da borda, para não destorcer*/
+}
+
+/*Aula 4*/
+/*Seletor que mexe na raiz do html*/
+/*Sem tema*/
+:root {
+  /*Passar nome para propriedades, variáveis de cores*/
+  --card-title-border-color: #746615;
+  --card-color-primary: #f7dd43;
+  --card-bg-color: #1d1c19;
+  --bg: url(./assets/bg-yellow.svg);
+}
+/*Tema 1*/
+body.blue {
+  /*Adicionar uma class blue no body*/
+  --card-title-border-color: #338af3;
+  --card-color-primary: #338af3;
+  --card-bg-color: #202024;
+  --bg: url(./assets/bg-blue.svg);
+}
+/*Tema 2*/
+body.green {
+  /*Adicionar uma class blue no body*/
+  --card-title-border-color: #047c3f;
+  --card-color-primary: #047c3f;
+  --card-bg-color: #1a1f1b;
+  --bg: url(./assets/bg-green.svg);
+}
+
+/*Tira a bolinha da linha da lista, onde esta as bandeiras*/
+ul {
+  list-style: none;
+}
+
+/*Todo o corpo do site*/
+body {
+  /*
+  -----------------Retirado Aula 4----------------------------
+    background-color: #121214;
+    background-image: var(--bg); //Pega imagem do fundo
+    background-position: top center; //Centraliza a imagem
+    background-repeat: no-repeat; //Não repetir imagem
+  */
+  /*---------------Ajuntado-------------------------------*/
+  background: #121214 var(--bg) no-repeat top center/cover;
+}
+
+/*Todo o texto do site altere para afonte Roboto*/
+body * {
+  font-family: "Roboto", sans-serif;
+}
+
+/*Pega o conteúdo Calendario e as bandeiras(Deixar flexivel)*/
+#app {
+  width: fit-content; /*Encaixa o conteúdo = vai encaixar nas larerais*/
+  /*margin: 52px auto; //52px para cima | auto = automatico nas laterais = Retirado Aula 4*/
+
+  /*Acrescentado Aula 4*/
+  margin: auto;
+  padding-top: 52px;
+}
+
+header {
+  margin-bottom: 63px;
+  text-align: center;
+}
+
+/*Aula - 3*/
+/*Dar espaço entre os cards das bandeiras*/
+#cards {
+  display: flex; /*Vai juntar todos um do lado do outro*/
+  flex-direction: column; /*Transformas em colunas*/
+  gap: 32px; /*Separa elementos*/
+}
+
+/*Região das bandeiras*/
+.card {
+  padding: 32px 23px; /*32px em cima e embaixo | 23px nas laterais*/
+  text-align: center; /*Alinha ao centro*/
+
+  /*
+  -----------------Retirado Aula 4----------------------------
+  background: #1d1c19;
+  border-bottom: 2px solid #f7dd43; //Borda abaixo 2px solida amarela
+  border-radius: 6px; //Arredondamento de bordas
+  */
+
+  /*Acrescentado Aula 4*/
+  background: var(
+    --card-bg-color
+  ); /*Passa nome das cor do seletor variável do root*/
+  border-bottom: 2px solid var(--card-color-primary); /*Passa nome das cor do seletor variável do root*/
+  border-radius: 6px;
+}
+
+/*Região dia e semana*/
+.card h2 {
+  /*O display libera o uso de tags como = gap, justify-content, align-items*/
+  /*O navegador mostra mais opções*/
+  display: flex; /*Flex = ajunta tudo | Transforma linha e bloco e vice versa*/
+  gap: 16px; /*16px de um elemento ao outro*/
+  justify-content: center; /*Alinhamento central na caixa*/
+  align-items: center;
+
+  padding: 8px 16px; /*8px em cima e embaixo | 16px nas laterais*/
+  border-radius: 6px; /*Arredondamento de bordas*/
+
+  /*border: 1px solid #746615; //Borda toda 1px solida amarela coco | Retirado na Aula 4*/
+
+  /*Acrescentado Aula 4*/
+  border: 1px solid var(--card-title-border-color); /*Passa nome das cor do seletor variável do root*/
+
+  width: fit-content; /*Encaixa o conteúdo = vai encaixar nas larerais*/
+  margin-inline: auto; /*Margin automatica em linha*/
+  margin-bottom: 53px; /*Espoço abaixo*/
+
+  color: #f7dd43; /*Cor número*/
+}
+
+/*O texto do span da semana*/
+.card h2 span {
+  color: #e1e1e6; /*Cor semana*/
+  font-size: 14px; /*tamanho da fonte*/
+  text-transform: uppercase; /*letra maiuscula*/
+}
+
+/*Espaços automatico entre as bandeiras*/
+.card ul {
+  /*O display libera o uso de tags como = gap, justify-content, align-items*/
+  /*O navegador mostra mais opções*/
+  display: flex; /*Flex = ajunta tudo | Transforma linha e bloco e vice versa*/
+  flex-direction: column; /*Transforma em colunas*/
+  gap: 24px; /*24px de um elemento ao outro*/
+
+  width: 270px; /*Largura da caixa das bandeiras*/
+}
+
+/*Região das bandeiras e horas*/
+.card ul li {
+  /*O display libera o uso de tags como = gap, justify-content, align-items*/
+  /*O navegador mostra mais opções*/
+  display: flex; /*Flex = ajunta tudo | Transforma linha e bloco e vice versa*/
+  align-items: center;
+  justify-content: space-between; /*Dá um espaço para os elementos*/
+}
+
+/*Quando houver outra região da bandeiras*/
+/*Região + li = que tenha uma tag anterior a ele um li*/
+/*Vai na ul e em li que anterior a ele tenha um li*/
+.card ul li + li {
+  padding-top: 24px; /*Cor número*/
+  border-top: 1px solid #323238; /*Borda acima 1px solida preto*/
+}
+
+/*Alterar o texto da hora*/
+.card ul li strong {
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 125%; /*altura da linha*/
+
+  color: #e1e1e6;
+}
+
+/*Aula 4*/
+/*hover = SubSelecto, quando passar o mouse em cima, */
+/*A virgula esta agrupando dois seletores recebem a mesma coisas*/
+.card h2:hover,
+.card ul li strong:hover,
+.card ul li img:hover {
+  transform: scale(1.1); /*Quando passar mouse aumenta +1*/
+}
+/*Deixar o aumento mais suave*/
+.card h2,
+.card ul li strong,
+.card ul li img {
+  transition: transform 0.3s; /*Vai esperar 3s para aumentar mouse em cima*/
+}
+/*Criar animação*/
+.card {
+  opacity: 0;
+  animation: appear 0.2s forwards; /*Coloca o nome do frame, com 7s*/
+}
+/*Criar uma frames, appear = parecer nome que foi dada para esta animação de frames*/
+/*Regra para aparecer*/
+@keyframes appear {
+  0% {
+    transform: translateY(-50px); /*Vai descer*/
+    opacity: 0; /*0 total mente escuro*/
+  }
+
+  100% {
+    opacity: 1; /*1 todo aparecido*/
+  }
+}
+/*Regra de reponsibilidade*/
+/*min-width: 700px = apartir de 700px para cima aplique o CSS abaixo*/
+@media (min-width: 650px) {
+  #cards {
+    max-width: 670px; /*Largura maxima no cartão*/
+    flex-direction: row; /*Arrumar o que estava abaixo um do outro e coloca-ló ao lado do outro*/
+    flex-wrap: wrap; /*Mantem todos no 670*/
+  }
+}
